@@ -387,7 +387,6 @@ class AtlassianServerManager extends AtlassianManager {
         }))
         projects.push(...pagedProjects)
         if (res.nextPage) {
-          log('AtlassianServerManager.getAllProjects fetching more results', res.total)
           return getProjectPage(cloudId, res.nextPage)
         }
       }
@@ -396,7 +395,7 @@ class AtlassianServerManager extends AtlassianManager {
       cloudIds.map((cloudId) =>
         getProjectPage(
           cloudId,
-          `https://api.atlassian.com/ex/jira/${cloudId}/rest/api/3/project/search?orderBy=name&maxResults=500`
+          `https://api.atlassian.com/ex/jira/${cloudId}/rest/api/3/project/search?orderBy=name`
         )
       )
     )
